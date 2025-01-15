@@ -3,5 +3,5 @@ from infrastructure.repositories.sqlalchemy_user_repository import SqlAchemyUser
 
 
 def create_user(username:str, password:str, role_id:int, repository:SqlAchemyUserRepository):
-    user = User(username=username, password=password, role_id=role_id)    
+    user = User(username=username, password=password, role_id=role_id)  
     return repository.create_user(user)

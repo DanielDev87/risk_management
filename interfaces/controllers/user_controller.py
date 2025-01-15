@@ -2,9 +2,12 @@ from infrastructure.database.db_config import SessionLocal
 from infrastructure.repositories.sqlalchemy_user_repository import SqlAchemyUserRepository
 from application.use_cases.create_event_user import create_user
 from fastapi import APIRouter, Depends
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 
 router = APIRouter()
+
+oauth2_scheme =  OAuth2PasswordBearer("/")
 
 def get_db():
     db = SessionLocal()
@@ -13,6 +16,11 @@ def get_db():
     finally:
         db.close()
 
+# root
+@router.get("/")
+def get_root():
+    return "Probando servidor"
+ 
 
 # Funcion para la ruta /users
 @router.post("/users/")
