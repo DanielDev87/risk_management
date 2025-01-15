@@ -13,6 +13,9 @@ def get_db():
     finally:
         db.close()
 
+@router.get("/")
+def root():
+    return "probando python"
 
 # Funcion para la ruta /users
 @router.post("/users/")
@@ -20,3 +23,4 @@ def create_new_user(username:str, password:str, role_id:int, db:Session = Depend
     repository = SqlAchemyUserRepository(db)
     user = create_user(username, password, role_id, repository)
     return user
+
