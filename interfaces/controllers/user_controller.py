@@ -13,9 +13,6 @@ def get_db():
     finally:
         db.close()
 
-@router.get("/")
-def root():
-    return "probando python"
 
 # Funcion para la ruta /users
 @router.post("/users/")
