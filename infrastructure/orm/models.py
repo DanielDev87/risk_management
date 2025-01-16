@@ -25,46 +25,46 @@ class Product_Service(Base):
     description = Column(String(255), nullable=False)  
 
 class Channel(Base):
-    __tablename__ = "Channels"
+    __tablename__ = "channels"
 
     id = Column(Integer, primary_key=True, index=True)
     description = Column(String(255), nullable=False)  
 
 class Risk_Category(Base):
-    __tablename__ = "Risk_Categories"
+    __tablename__ = "risk_categories"
 
     id = Column(Integer, primary_key=True, index=True)
     description = Column(String(255), nullable=False)  
   
 class Risk_Type(Base):
-    __tablename__ = "Risk_Types"
+    __tablename__ = "risk_types"
 
     id = Column(Integer, primary_key=True, index=True)
-    Category_id = Column(Integer, ForeignKey('Risk_Categories.id'), nullable=False)
+    Category_id = Column(Integer, ForeignKey('risk_categories.id'), nullable=False)
     description = Column(String(255), nullable=False) 
 
 class Macroprocess(Base):
-    __tablename__ = "Macroprocesses"
+    __tablename__ = "macroprocesses"
 
     id = Column(Integer, primary_key=True, index=True)
     description = Column(String(255), nullable=False) 
 
 class Process(Base):
-    __tablename__ = "Processes"
+    __tablename__ = "processes"
 
     id = Column(Integer, primary_key=True, index=True)
-    macroprocess_id = Column(Integer, ForeignKey('Macroprocesses.id'), nullable=False)
+    macroprocess_id = Column(Integer, ForeignKey('macroprocesses.id'), nullable=False)
     description = Column(String(255), nullable=False) 
 
 class Risk_Factor(Base):
-    __tablename__ = "Risk_Factors"
+    __tablename__ = "risk_factors"
 
     id = Column(Integer, primary_key=True, index=True)
-    risk_type_id = Column(Integer, ForeignKey('Risk_Types.id'), nullable=False)  # Clave foránea
+    risk_type_id = Column(Integer, ForeignKey('risk_types.id'), nullable=False)  # Clave foránea
     description = Column(String(255), nullable=False)
 
 class Impact(Base):
-    __tablename__ = 'Impact' 
+    __tablename__ = 'impact' 
 
     id = Column(Integer, primary_key=True, index=True)
     level = Column(Integer, nullable=False) 
@@ -73,7 +73,7 @@ class Impact(Base):
     criteria_smlv = Column(Numeric(10, 2))
 
 class Probability(Base):
-    __tablename__ = 'Probability' 
+    __tablename__ = 'probability' 
 
     id = Column(Integer, primary_key=True, index=True)
     level = Column(Integer, nullable=False) 
@@ -82,7 +82,7 @@ class Probability(Base):
     criteria_smlv = Column(Numeric(5, 2))
 
 class Risk_Control_Types(Base):
-    __tablename__ = "Risk_Control_Types"
+    __tablename__ = "risk_control_types"
 
     id = Column(Integer, primary_key=True, index=True)
     description = Column(String(255), nullable=False) 
@@ -153,3 +153,13 @@ class Tracking(Base):
     control_id = Column(Integer, ForeignKey('controls.id'), nullable=False)  
     event_id = Column(Integer, ForeignKey('event_logs.id'), nullable=False)  
     tracking_date = Column(DateTime, nullable=False) 
+
+class Notification(Base):
+    __tablename__ = 'notifications'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)  
+    message = Column(Text, nullable=False)  
+    suggestion_control = Column(String(255), nullable=True)  
+    date_sent = Column(DateTime, nullable=False)  
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)  
+    event_id = Column(Integer, ForeignKey('event_logs.id'), nullable=False) 
