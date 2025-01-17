@@ -1,8 +1,9 @@
+from typing import Optional
 from pydantic import BaseModel
 
 
 
 class Risk_Type(BaseModel):
-    id: int
+    id: Optional[int] = None
     category_id: int
     description: str
