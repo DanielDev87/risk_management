@@ -184,3 +184,25 @@ class Tracking(Base):
     control_id = Column(Integer, ForeignKey('controls.id'), nullable=False)
     event_id = Column(Integer, ForeignKey('event_logs.id'), nullable=False)
     tracking_date = Column(DateTime, nullable=False)
+
+
+class Notification(Base):
+    __tablename__ = 'notification'
+    
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    message= Column(String(255), nullable=False)
+    suggestion_control = Column(String(255), nullable=False)
+    date_send = Column(DateTime, nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+    eventlog_id=Column(Integer, ForeignKey('event_logs.id'), nullable=False)
+
+class History(Base):
+    __tablename__ = 'history'
+    
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    eventlog_id=Column(Integer, ForeignKey('event_logs.id'), nullable=False)
+    control_id = Column(Integer, ForeignKey('controls.id'), nullable=False)
+    star_date = Column(DateTime, nullable=False)
+    end_date = Column(DateTime, nullable=False)
+    value_risk = Column(Numeric(5, 2))
+    
