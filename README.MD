@@ -12,6 +12,10 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 ### Pre-requisitos 📋
 
 _Que cosas necesitas para instalar el software y como instalarlas_
+Python en la version minima 3.12
+Postgresql
+Todos los paqueets instalados en el entorno virtual y listados en el requirements.txt
+
 
 ```
 Da un ejemplo
@@ -63,9 +67,10 @@ _Agrega notas adicionales sobre como hacer deploy_
 
 _Menciona las herramientas que utilizaste para crear tu proyecto_
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+* [FastAPI](https://fastapi.tiangolo.com/) - El framework web usado para Backend
+* [PIP](https://pip.pypa.io/en/stable/user_guide/) - Manejador de dependencias
+
+* [POSTGRESQL](https://www.postgresql.org/docs/) - Motor de la base de datos
 
 ## Contribuyendo 🖇️
 
