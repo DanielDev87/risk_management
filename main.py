@@ -6,6 +6,11 @@ from interfaces.controllers.risk_type_controller import router as risk_type_cont
 from interfaces.controllers.risk_factor_controller import router as risk_factor_controller
 from interfaces.controllers.risk_control_type_controller import router as risk_control_type_controller
 from interfaces.controllers.control_controller import router as control_controller
+from interfaces.controllers.event_controller import router as event_controller
+from interfaces.controllers.probability_controller import router as probability_controller
+from interfaces.controllers.cause_controller import router as cause_controller
+from interfaces.controllers.impact_controller import router as impact_controller
+from interfaces.controllers.tracking_controller import router as tracking_controller
 from infrastructure.database.db_config import Base, engine
 from contextlib import asynccontextmanager
 
@@ -29,3 +34,8 @@ app.include_router(risk_type_controller)
 app.include_router(risk_factor_controller)  
 app.include_router(risk_control_type_controller)  
 app.include_router(control_controller)  
+app.include_router(event_controller)
+app.include_router(probability_controller)
+app.include_router(cause_controller)
+app.include_router(impact_controller)
+app.include_router(tracking_controller)
