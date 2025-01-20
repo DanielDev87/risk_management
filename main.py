@@ -5,6 +5,7 @@ from interfaces.controllers.risk_category_controller import router as risk_categ
 from interfaces.controllers.risk_type_controller import router as risk_type_controller
 from interfaces.controllers.risk_factor_controller import router as risk_factor_controller
 from interfaces.controllers.risk_control_type_controller import router as risk_control_type_controller
+from interfaces.controllers.control_controller import router as control_controller
 from infrastructure.database.db_config import Base, engine
 from contextlib import asynccontextmanager
 
@@ -26,4 +27,5 @@ app.include_router(role_controller)
 app.include_router(risk_category_controller)
 app.include_router(risk_type_controller)
 app.include_router(risk_factor_controller)  
-app.include_router(risk_control_type_controller)    
+app.include_router(risk_control_type_controller)  
+app.include_router(control_controller)  
