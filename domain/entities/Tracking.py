@@ -3,7 +3,7 @@ from typing import Optional
 from datetime import datetime
 
 class Tracking(BaseModel):
-    id: int 
+    id: Optional[int] = None
     user_id: int 
     control_id: int 
     event_id: int 
