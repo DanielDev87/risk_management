@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
-class Channel(BaseModel):
+class Risck_Control_Type(BaseModel):
     id: int
     description: str

@@ -4,13 +4,16 @@ from sqlalchemy import insert, update, delete
 from sqlalchemy.exc import IntegrityError
 from typing import List, Optional
 from infrastructure.orm.models import RiskCategory
+from domain.entities.Risk_Category import Risk_Category
 
 class RiskCategoryRepository:
     def __init__(self, session: AsyncSession):
         self.session = session
 
-    async def create_risk_category(self, risk_category: RiskCategory) -> RiskCategory:
-        stmt = insert(RiskCategory).values(description=risk_category.description).returning(RiskCategory.id, RiskCategory.description)
+    async def create_risk_category(self, risk_category: Risk_Category) -> Risk_Category:
+        stmt = insert(RiskCategory).values(
+            description=risk_category.description
+        ).returning(RiskCategory.id, RiskCategory.description)
         try:
             result = await self.session.execute(stmt)
             await self.session.commit()

@@ -6,7 +6,6 @@ from typing import List, Optional
 from infrastructure.orm.models import RiskType
 from domain.entities.Risk_Type import Risk_Type
 
-
 class RiskTypeRepository:
     def __init__(self, session: AsyncSession):
         self.session = session
