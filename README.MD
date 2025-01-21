@@ -39,7 +39,7 @@ hasta finalizar
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
-Modelado Base de Datos(<https://github.com/DanielDev87/risk_management/blob/eliza/Modelado_Base_Datos.docx>) 
+Modelado Base de Datos(<https://github.com/DanielDev87/risk_management/blob/adriana/MODELADO%20DE%20BASE%20DE%20DATOS.docx>) 
 
 ## Ejecutando las pruebas ⚙️
 
