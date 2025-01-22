@@ -11,6 +11,8 @@ from interfaces.controllers.probability_controller import router as probability_
 from interfaces.controllers.cause_controller import router as cause_controller
 from interfaces.controllers.impact_controller import router as impact_controller
 from interfaces.controllers.tracking_controller import router as tracking_controller
+from interfaces.controllers.process_controller import router as process_controller
+from interfaces.controllers.macroprocess_controller import router as macroprocess_controller
 from infrastructure.database.db_config import Base, engine
 from contextlib import asynccontextmanager
 
@@ -39,3 +41,5 @@ app.include_router(probability_controller)
 app.include_router(cause_controller)
 app.include_router(impact_controller)
 app.include_router(tracking_controller)
+app.include_router(process_controller)
+app.include_router(macroprocess_controller)
