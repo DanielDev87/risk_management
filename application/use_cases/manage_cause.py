@@ -1,5 +1,5 @@
 from domain.entities.Cause import Cause
-from domain.repositories.cause_reository import CauseRepository
+from domain.repositories.cause_repository import CauseRepository
 
 async def create_cause(cause_data:Cause, repository:CauseRepository):
     return await repository.create_cause(cause_data)
