@@ -13,6 +13,8 @@ from interfaces.controllers.impact_controller import router as impact_controller
 from interfaces.controllers.tracking_controller import router as tracking_controller
 from interfaces.controllers.process_controller import router as process_controller
 from interfaces.controllers.macroprocess_controller import router as macroprocess_controller
+from interfaces.controllers.personal_controller import router as personal_controller
+from interfaces.controllers.channel_controller import router as channel_controller
 from infrastructure.database.db_config import Base, engine
 from contextlib import asynccontextmanager
 
@@ -43,3 +45,5 @@ app.include_router(impact_controller)
 app.include_router(tracking_controller)
 app.include_router(process_controller)
 app.include_router(macroprocess_controller)
+app.include_router(personal_controller)
+app.include_router(channel_controller)

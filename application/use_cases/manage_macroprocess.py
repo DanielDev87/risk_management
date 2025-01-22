@@ -1,5 +1,5 @@
 from domain.entities.Macroprocess import Macroprocess
-from infrastructure.repositories.macroprocess_repository import MacroprocessRepository
+from domain.repositories.macroprocess_repository import MacroprocessRepository
 
 async def create_macroprocess(description: str, repository: MacroprocessRepository):
     macroprocess = Macroprocess(description=description)
