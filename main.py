@@ -16,6 +16,9 @@ from interfaces.controllers.macroprocess_controller import router as macroproces
 from interfaces.controllers.personal_controller import router as personal_controller
 from interfaces.controllers.channel_controller import router as channel_controller
 from interfaces.controllers.product_service_controller import router as product_service_controller
+from interfaces.controllers.notification_controller import router as notification_controller
+from interfaces.controllers.history_controller import router as history_controller
+from interfaces.controllers.event_log_controller import router as event_log_controller
 from infrastructure.database.db_config import Base, engine
 from contextlib import asynccontextmanager
 
@@ -49,3 +52,6 @@ app.include_router(macroprocess_controller)
 app.include_router(personal_controller)
 app.include_router(channel_controller)
 app.include_router(product_service_controller)
+app.include_router(notification_controller)
+app.include_router(history_controller)
+app.include_router(event_log_controller)
