@@ -15,6 +15,7 @@ from interfaces.controllers.process_controller import router as process_controll
 from interfaces.controllers.macroprocess_controller import router as macroprocess_controller
 from interfaces.controllers.personal_controller import router as personal_controller
 from interfaces.controllers.channel_controller import router as channel_controller
+from interfaces.controllers.product_service_controller import router as product_service_controller
 from infrastructure.database.db_config import Base, engine
 from contextlib import asynccontextmanager
 
@@ -47,3 +48,4 @@ app.include_router(process_controller)
 app.include_router(macroprocess_controller)
 app.include_router(personal_controller)
 app.include_router(channel_controller)
+app.include_router(product_service_controller)
