@@ -1,7 +1,7 @@
-import datetime
+from datetime import datetime
 from fastapi import APIRouter, HTTPException, Depends
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from sqlalchemy.ext.asyncio import AsyncSession
 from infrastructure.database.db_config import get_db
 from domain.repositories.event_log_repository import EventLogRepository
@@ -18,9 +18,9 @@ router = APIRouter()
 class EventLogCreate(BaseModel):
     event_code: Optional[str]
     start_date: datetime
-    end_date: Optional[datetime.datetime]
-    discovery_date: Optional[datetime.datetime]
-    accounting_date: Optional[datetime.datetime]
+    end_date: Optional[datetime]
+    discovery_date: Optional[datetime]
+    accounting_date: Optional[datetime]
     amount: Optional[float]
     recovered_amount: Optional[float]
     insurance_recovery: Optional[float]
@@ -31,6 +31,9 @@ class EventLogCreate(BaseModel):
     city: Optional[str]
     responsible_id: Optional[int]
     status: Optional[str]
+
+     # Configuración para permitir tipos arbitrarios
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
 class EventLogResponse(EventLogCreate):
     id: int

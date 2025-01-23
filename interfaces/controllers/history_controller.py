@@ -1,7 +1,7 @@
-import datetime
+from datetime import datetime
 from fastapi import APIRouter, HTTPException, Depends
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from sqlalchemy.ext.asyncio import AsyncSession
 from infrastructure.database.db_config import get_db
 from domain.repositories.history_repository import HistoryRepository
@@ -18,16 +18,19 @@ router = APIRouter()
 class HistoryCreate(BaseModel):
     eventlog_id: int
     control_id: int
-    start_date: datetime.datetime
-    end_date: Optional[datetime.datetime]
+    start_date: datetime
+    end_date: Optional[datetime]
     value_risk: float
+
+     # Configuración para permitir tipos arbitrarios
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
 class HistoryResponse(BaseModel):
     id: int
     eventlog_id: int
     control_id: int
-    start_date: datetime.datetime
-    end_date: Optional[datetime.datetime]
+    start_date: datetime
+    end_date: Optional[datetime]
     value_risk: float
 
 @router.post("/histories/", response_model=HistoryResponse)

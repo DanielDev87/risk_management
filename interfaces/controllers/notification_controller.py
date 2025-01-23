@@ -1,7 +1,7 @@
-import datetime
+from datetime import datetime
 from fastapi import APIRouter, HTTPException, Depends
 from typing import List
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from sqlalchemy.ext.asyncio import AsyncSession
 from infrastructure.database.db_config import get_db
 from domain.repositories.notification_repository import NotificationRepository
@@ -21,6 +21,9 @@ class NotificationCreate(BaseModel):
     date_send: datetime
     user_id: int
     eventlog_id: int
+
+     # Configuración para permitir tipos arbitrarios
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
 class NotificationResponse(BaseModel):
     id: int
