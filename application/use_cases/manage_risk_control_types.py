@@ -1,6 +1,4 @@
 from domain.entities.Risk_Control_Types import Risk_Control_Types
-<<<<<<< HEAD
-=======
 from domain.repositories.risk_control_type_repository import RiskControlTypeRepository
 
 
@@ -22,4 +20,3 @@ async def update_risk_control_type(control_type_id: int, control_type_data: Risk
 
 async def delete_risk_control_type(control_type_id: int, repository: RiskControlTypeRepository) -> None:
     await repository.delete_risk_control_type(control_type_id)
->>>>>>> b4a58c63b1306a0bb223bffc5bc4961996ba2352
