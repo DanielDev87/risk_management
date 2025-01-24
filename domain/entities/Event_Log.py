@@ -3,7 +3,7 @@ from typing import Optional
 from datetime import datetime
 
 class EventLog(BaseModel):
-    id: int 
+    id: Optional[int]=None
     event_code: Optional[str] 
     start_date: datetime 
     end_date: Optional[datetime] 

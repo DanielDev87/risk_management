@@ -81,11 +81,16 @@ async def read_all_cause_endpoint(db: AsyncSession = Depends(get_db)):
 =======
 
 
-@router.post("/causes/", response_model=CauseResponse)
+@router.post("/causes/", response_model=CauseResponse, status_code=201)
 async def create_cause_endpoint(cause: CauseCreate, db: AsyncSession = Depends(get_db)):
     repository = CauseRepository(db)
     created_cause = await create_cause(cause, repository)
-    return CauseResponse(**created_cause.dict())
+    return CauseResponse(
+        id=created_cause.id,
+        description=created_cause.description,
+        risk_factor_id=created_cause.risk_factor_id,
+        event_id=created_cause.event_id,
+    )
 
 
 @router.get("/causes/{cause_id}", response_model=CauseResponse)
@@ -94,14 +99,27 @@ async def read_cause_endpoint(cause_id: int, db: AsyncSession = Depends(get_db))
     cause = await get_cause(cause_id, repository)
     if not cause:
         raise HTTPException(status_code=404, detail="Cause not found")
-    return CauseResponse(**cause.dict())
+    return CauseResponse(
+        id=cause.id,
+        description=cause.description,
+        risk_factor_id=cause.risk_factor_id,
+        event_id=cause.event_id,
+    )
 
 
 @router.get("/causes/", response_model=List[CauseResponse])
 async def read_all_causes_endpoint(db: AsyncSession = Depends(get_db)):
     repository = CauseRepository(db)
     causes = await get_all_causes(repository)
-    return [CauseResponse(**c.dict()) for c in causes]
+    return [
+        CauseResponse(
+            id=c.id,
+            description=c.description,
+            risk_factor_id=c.risk_factor_id,
+            event_id=c.event_id,
+        )
+        for c in causes
+    ]
 
 
 @router.put("/causes/{cause_id}", response_model=CauseResponse)
@@ -112,10 +130,14 @@ async def update_cause_endpoint(cause_id: int, cause: CauseCreate, db: AsyncSess
     if not updated_cause:
         raise HTTPException(status_code=404, detail="Cause not found")
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b45a91bcf58cd148abbdda1f7b4a3e2c301d6b86
     return CauseResponse(
         id=updated_cause.id,
         description=updated_cause.description,
         risk_factor_id=updated_cause.risk_factor_id,
+<<<<<<< HEAD
         event_id=updated_cause.event_id
     )
 
@@ -126,6 +148,13 @@ async def update_cause_endpoint(cause_id: int, cause: CauseCreate, db: AsyncSess
 
 @router.delete("/causes/{cause_id}", response_model=dict)
 >>>>>>> b4a58c63b1306a0bb223bffc5bc4961996ba2352
+=======
+        event_id=updated_cause.event_id,
+    )
+
+
+@router.delete("/causes/{cause_id}", status_code=204)
+>>>>>>> b45a91bcf58cd148abbdda1f7b4a3e2c301d6b86
 async def delete_cause_endpoint(cause_id: int, db: AsyncSession = Depends(get_db)):
     repository = CauseRepository(db)
     await delete_cause(cause_id, repository)

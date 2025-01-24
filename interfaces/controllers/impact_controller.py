@@ -32,7 +32,7 @@ class ImpactResponse(BaseModel):
 async def create_impact_endpoint(impact: ImpactCreate, db: AsyncSession = Depends(get_db)):
     repository = ImpactRepository(db)
     created_impact = await create_impact(impact, repository)
-    return ImpactResponse(**created_impact.dict())
+    return ImpactResponse(**created_impact.model_dump())
 
 
 @router.get("/impacts/{impact_id}", response_model=ImpactResponse)
@@ -41,14 +41,14 @@ async def read_impact_endpoint(impact_id: int, db: AsyncSession = Depends(get_db
     impact = await get_impact(impact_id, repository)
     if not impact:
         raise HTTPException(status_code=404, detail="Impact not found")
-    return ImpactResponse(**impact.dict())
+    return ImpactResponse(**impact.model_dump())
 
 
 @router.get("/impacts/", response_model=List[ImpactResponse])
 async def read_all_impacts_endpoint(db: AsyncSession = Depends(get_db)):
     repository = ImpactRepository(db)
     impacts = await get_all_impacts(repository)
-    return [ImpactResponse(**i.dict()) for i in impacts]
+    return [ImpactResponse(**i.model_dump()) for i in impacts]
 
 
 @router.put("/impacts/{impact_id}", response_model=ImpactResponse)
@@ -57,7 +57,7 @@ async def update_impact_endpoint(impact_id: int, impact: ImpactCreate, db: Async
     updated_impact = await update_impact(impact_id, impact, repository)
     if not updated_impact:
         raise HTTPException(status_code=404, detail="Impact not found")
-    return ImpactResponse(**updated_impact.dict())
+    return ImpactResponse(**updated_impact.model_dump())
 
 
 @router.delete("/impacts/{impact_id}", response_model=dict)
