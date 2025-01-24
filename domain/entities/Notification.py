@@ -1,11 +1,12 @@
-from pydantic import BaseModel, Field
 from typing import Optional
+from pydantic import BaseModel
 from datetime import datetime
-
+    
 class Notification(BaseModel):
-    id: int 
-    message: str 
-    suggestion_control: Optional[str] 
-    date_sent: datetime 
-    user_id: int 
-    event_id: int 
+    id: Optional[int] = None
+    message: str  
+    suggestion_control: str
+    date_send: datetime
+    user_id: int
+    eventlog_id: int
+

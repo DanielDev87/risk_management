@@ -1,7 +1,8 @@
+from typing import Optional
 from pydantic import BaseModel
 
-class Process(BaseModel):
-    id: int
+class Probability(BaseModel):
+    id: Optional[int] = None
     level: int
     description: str
     definition: str
